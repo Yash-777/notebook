@@ -1,4 +1,5 @@
-#Git Fundamentals#
+Git Introduction
+================
 
 Git is an open source distributed version control system (DVCS) created by [Linus Torvalds](http://en.wikipedia.org/wiki/Linus_Torvalds) in 2005 for the Linux kernal, and is written in Perl and C.
 
