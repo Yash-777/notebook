@@ -648,7 +648,7 @@ Cloud9 provides breakpoints, resume, call stack, interactive execution, variable
 
 # Scaling Your Application #
 
-One criticism of Node applications is that they do not handle CPU intensive tasks well. This is because spending too much CPU time on any one task in your Nod app will block the event loop and prevent other work from being done.
+One criticism of Node applications is that they do not handle CPU intensive tasks well. This is because spending too much CPU time on any one task in your Node app will block the event loop and prevent other work from being done.
 
 ## Child Processes ##
 
