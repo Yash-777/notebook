@@ -401,4 +401,4 @@ eventsApp.controller('EditEventController', function EditEventController ($scope
 });
 ```
 
-### [Next : Services](https://github.com/scottoffen/ps-notes/master/angularjs-introduction-03.md) ###
+### [Next : Services](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-03.md) ###
