@@ -1,3 +1,5 @@
+AngularJS Introduction : Part Two
+=================================
 
 # Controllers & Markup #
 
@@ -396,3 +398,5 @@ eventsApp.controller('EditEventController', function EditEventController ($scope
     };
 });
 ```
+
+### [Next : Services](https://github.com/scottoffen/ps-notes/edit/master/angularjs-introduction-03.md) ###
