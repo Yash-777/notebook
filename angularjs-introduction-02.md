@@ -201,14 +201,14 @@ Not all directives can be written in all four ways. Check the documentation for 
 12. `ngClassOdd`
 13. `ngDisabled` : add or remove the attributed based on the true/false of the value assigned
 14. `ngChecked`
-14. `ngMultiple`
-14. `ngReadonly`
-14. `ngSelected`
-15. `ngForm` : nest forms
-16. `ngSubmit`
-14. `ngHref` : bind the href property on an anchor tag
-14. `ngSrc` : bind the src property on a image tag
-14. `ngNonBindable` : don't parse this
+15. `ngMultiple`
+16. `ngReadonly`
+17. `ngSelected`
+18. `ngForm` : nest forms
+19. `ngSubmit`
+20. `ngHref` : bind the href property on an anchor tag
+21. `ngSrc` : bind the src property on a image tag
+22. `ngNonBindable` : don't parse this
 
 **HTML Injection Workaround**
 
