@@ -176,6 +176,7 @@ Directives are a way to give HTML new functionality.
 Not all directives can be written in all four ways. Check the documentation for the directive you want to use.
 
 **Event Directives**
+
 1. `ngClick`
 2. `ngDblClick`
 3. `ngMousedown`
@@ -187,6 +188,7 @@ Not all directives can be written in all four ways. Check the documentation for 
 9. `ngChange` (requires `ngModel`)
 
 **Other Directives**
+
 1. `ngApp`
 2. `ngBind` : Single bindings
 3. `ngBindTemplate` : Multiple bindings
