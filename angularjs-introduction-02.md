@@ -1,6 +1,8 @@
 AngularJS Introduction : Part Two
 =================================
 
+### [Prev: Introduction](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-01.md) ###
+
 # Controllers & Markup #
 
 Go to the [course github site](https://github.com/joeeames/AngularFundamentalsFiles) and download and extract the DemoApp.zip file. Update the version of Angular used in that app, if you'd like.
