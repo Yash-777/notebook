@@ -1,5 +1,5 @@
-AngularJS Introduction
-====================
+AngularJS Introduction : Part One
+=================================
 
 *Simple and Elegant MVC Web Applications*
 
@@ -53,3 +53,5 @@ __\*__ is anything else, such as a controller, presenter or ViewModel. Angular u
 A zip file that acts as a starting point for an angular application.  It contains basic organization, and is geared towards a small project. It also contains a simple node server.
 
 Download and extract the zip, then run `npm install`, `npm test` and `npm start`.
+
+[Next: Controllers and Markup](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-02.md)
