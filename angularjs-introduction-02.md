@@ -19,93 +19,83 @@ The controllers responsibility is to create a scope object. The scope object is 
 
 The scope is what ties our controller to our view, but the scope is NOT the model.
 
+## Create The Application ##
+
+We create our application module by calling the `module` function off of Angular and passing it a name (which, for convenience, should be the same as the name of the variable we are using) and an array of dependencies.
+
+**app.js**
+```javascript
+var eventsApp = angular.module('eventsApp', ['ngSanitize']);
+```
+
 ## Markup & Binding ##
 
 **EventDetails.html**
 
 ```html
-<!doctype html>
-<html lang="en" ng-app="eventsApp">
-    <head>
-        <meta charset="utf-8">
-        <title>Event Registration</title>
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
-    <body>
 
-        <div class="container">
-
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <ul class="nav">
-
-                    </ul>
-                </div>
-            </div>
-
-            <div ng-controller="EventController">
-                <img ng-src="{{event.imgUrl}}" alt="{{event.name}}" style="width: 200px;">
-                <div class="row">
-                    <div class="spann11">
-                        <h2>{{event.name}}</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span3">
-                        <div><strong>Date: </strong>{{event.date}}</div>
-                        <div><strong>Time: </strong>{{event.time}}</div>
-                    </div>
-                    <div class="span4">
-                        <strong>Address:</strong><br>
-                        {{event.location.address}}<br>
-                        {{event.location.city}}, {{event.location.province}}
-                    </div>
-                </div>
-
-                <hr>
-
-                <h3>Sessions</h3>
-                <ul class="thumbnails">
-                    <li ng-repeat="session in event.sessions">
-                        <div class="row session">
-                            <div class="span0 well votingWidget">
-                                <div class="votingButton" ng-click="upVoteSession(session)">
-                                    <i class="icon-chevron-up icon-white"></i>
-                                </div>
-                                <div class="badge badge-inverse">
-                                    <div>{{session.upVoteCount}}</div>
-                                </div>
-                                <div class="votingButton" ng-click="downVoteSession(session)">
-                                    <i class="icon-chevron-down icon-white"></i>
-                                </div>
-                            </div>
-
-                            <div class="well span9">
-                                <h4>{{session.name}}</h4>
-                                <h6 style="margin-top: -10px">{{session.creatorName}}</h6>
-                                <span>Duration: {{session.duration}}</span><br>
-                                <span>Level: {{session.level}}</span><br><br>
-
-                                <p>{{session.abstract}}</p>
-                            </div>
-                        </div>
-                    </li>
-                </div>
-            </div>
+<body ng-cloak>
+...
+<div ng-controller="EventController">
+    <img ng-src="{{event.imgUrl}}" alt="{{event.name}}" style="width: 200px;">
+    <div class="row">
+        <div class="spann11">
+            <h2>{{event.name}}</h2>
         </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            <div><strong>Date: </strong>{{event.date}}</div>
+            <div><strong>Time: </strong>{{event.time}}</div>
+        </div>
+        <div class="span4">
+            <strong>Address:</strong><br>
+            {{event.location.address}}<br>
+            {{event.location.city}}, {{event.location.province}}
+        </div>
+    </div>
 
-        <script src="/lib/jquery.min.js"></script>
-        <script src="/lib/underscore-1.4.4.min.js"></script>
-        <script src="/lib/bootstrap.min.js"></script>
-        <script src="/lib/angular/angular.js"></script>
-        <script src="/js/app.js"></script>
-        <script src="/js/controllers/EventController.js"></script>
-    </body>
-</html>
+    <hr>
+
+    <h3>Sessions</h3>
+    <ul class="thumbnails">
+        <li ng-repeat="session in event.sessions">
+            <div class="row session">
+                <div class="span0 well votingWidget">
+                    <div class="votingButton" ng-click="upVoteSession(session)">
+                        <i class="icon-chevron-up icon-white"></i>
+                    </div>
+                    <div class="badge badge-inverse">
+                        <div>{{session.upVoteCount}}</div>
+                    </div>
+                    <div class="votingButton" ng-click="downVoteSession(session)">
+                        <i class="icon-chevron-down icon-white"></i>
+                    </div>
+                </div>
+
+                <div class="well span9">
+                    <h4>{{session.name}}</h4>
+                    <h6 style="margin-top: -10px">{{session.creatorName}}</h6>
+                    <span>Duration: {{session.duration}}</span><br>
+                    <span>Level: {{session.level}}</span><br><br>
+
+                    <p>{{session.abstract}}</p>
+                </div>
+            </div>
+        </li>
+    </div>
+</div>
+...
+<script src="/lib/angular/angular.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/EventController.js"></script>
 ```
 
 **EventController.js**
+
+The controller is attached to our module by calling the `controller` function of the module, and passing it a name - which must match the controller name specified in the HTML - and a function. The function takes an empty `$scope` variable as the first parameter. 
+
+>Much like jQuery, the $ at the beginning of the variable name indicates that it is a component provided by Angular.
 
 ```javascript
 'use strict';
@@ -170,12 +160,13 @@ eventsApp.controller('EventController', function ($scope)
 Directives are a way to give HTML new functionality. 
 
 **Four Way to Specify Directives**
+
 1. As a tag itself `<ng-form />`
 2. As an attribute of a tag `<div ng-form>`
 3. As a class `<div class="ng-form">`
 4. Inside an HTML comment (no code samples for this)
 
-Not all directives can be written in all four ways. Check the documentation for the directive you want to use.
+>Not all directives can be written in all four ways. Check the documentation for the directive you want to use.
 
 **Event Directives**
 
@@ -214,25 +205,25 @@ Not all directives can be written in all four ways. Check the documentation for 
 21. `ngSrc` : bind the src property on a image tag
 22. `ngNonBindable` : don't parse this
 
-**HTML Injection Workaround**
-
-Given that the `ngBindHtmlUnsafe` directive has been deprecated, here is how you inject HTML using Angular (via [StackOverflow](http://stackoverflow.com/questions/19415394/with-ng-bind-html-unsafe-removed-how-do-i-inject-html)) and [`$sce`](https://docs.angularjs.org/api/ng/service/$sce).
-
-```javascript
-angular.module('myApp').filter('to_trusted', ['$sce', function($sce)
-{
-	return function(text)
-	{
-		return $sce.trustAsHtml(text);
-	};
-}]);
-```
-
-Usage:
-
-```javascript
-<div ng-bind-html="data.html | to_trusted"></div>
-```
+>**HTML Injection Workaround**
+>
+>Given that the `ngBindHtmlUnsafe` directive has been deprecated, here is how you inject HTML using Angular (via [StackOverflow](http://stackoverflow.com/questions/19415394/with-ng-bind-html-unsafe-removed-how-do-i-inject-html)) and [`$sce`](https://docs.angularjs.org/api/ng/service/%24sce).
+>
+>```javascript
+>angular.module('myApp').filter('to_trusted', ['$sce', function($sce)
+>{
+>	return function(text)
+>	{
+>		return $sce.trustAsHtml(text);
+>	};
+>}]);
+>```
+>
+>Usage:
+>
+>```javascript
+><div ng-bind-html="data.html | to_trusted"></div>
+>```
 
 **IE Restrictions**
 
@@ -243,7 +234,7 @@ If your site needs to support older versions of IE, you will need to do two thin
 
 **Expressions**
 
-Expressions are code snippets in Angular that support a subset of JavaScript.
+Expressions are code snippets in Angular that support a subset of JavaScript. They use the double-bracket notation.
 
 ```javascript
 {{ 3 * 10 }
@@ -296,7 +287,7 @@ module.filter('name', function ()
 
 Allows you to use your typical form controls and keep your model up to date automatically.
 
-`ngModel` directive works with `input`, `select` and `textarea`.
+>The `ng-model` directive works with `input`, `select` and `textarea`.
 
 ```html
 // A property in the scope
