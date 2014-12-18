@@ -3,11 +3,11 @@ Introduction to SOLID
 
 SOLID is a mnemonic acronym for the five basic principles of object-oriented programming. The principles, when applied together, intend to make it more likely that a programmer will create a system that is easy to maintain and extend over time.
 
-- [S](#single-responsibility-principle)
-- [O]()
-- [L]()
-- [I]()
-- [D]()
+- [S](#single-responsibility-principle)ingle Responsibility Principle
+- [O](#openclosed-principle)pen/Closed Principle
+- [L](#liskov-substitution-principle)iskov Substitution Principle
+- [I](#interface-segregation-principle)nterface Segregation Principle
+- [D](#dependency-inversion-principle)ependency Inversion Principle
 
 ## Single Responsibility Principle ##
 
