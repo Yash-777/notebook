@@ -5,7 +5,7 @@ AngularJS Introduction : Part Three
 
 # Services #
 
-A service is a worker object that performs some sort of (typically reusable) business logic. While it is not accessed "over the wire" (i.e. a web service), it may be used to perform operations that do, such as make AJAX calls.  Services are generally stateless, although it is not unusually for services to cache data that is accessed frequently.
+A service is a worker object that performs some sort of (typically reusable) business logic. While it is not accessed "over the wire" (i.e. a web service), it may be used to perform operations that do, such as make AJAX calls.  Services are generally stateless, although it is not unusual for services to cache data that is accessed frequently.
 
 Services facilitate reusablility and ease of maintenance. You don't want to put all of your logic inside of a controller as that would be difficult to maintain and would violate the [single responsibility principle](https://github.com/scottoffen/ps-notes/blob/master/solid-introduction.md#single-responsibility-principle) (SRP).
 
@@ -15,7 +15,7 @@ Services can be injected into your controllers - and other services - that need 
 
 ## Creating Services ##
 
-Services are created by calling the `factory` method on the module you want that service to be available in, then it can be injected by referencing in.
+Services are created by calling the `factory` method on the module you want that service to be available in, then it can be injected by referencing it.
 
 ### EventData.js ###
 
@@ -94,6 +94,8 @@ eventsApp.controller('EventController', function ($scope, eventData)
     };
 });
 ```
+
+>Notice that only built-in services begin with the `$`. Since `eventData` is a custom service, we omit the `$`. 
 
 ## Commonly Used Built-In Services ###
 
