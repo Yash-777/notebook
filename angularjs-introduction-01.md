@@ -3,6 +3,8 @@ AngularJS Introduction : Part One
 
 *Simple and Elegant MVC Web Applications*
 
+>**AngularJS vs jQuery** : Most would consider this not a apt comparison, claiming that AngularJS and jQuery serve different purposes. However, AngularJS addresses - and attempts to enforce - good separation of of concerns (SOC), while jQuery does not. How you value the difference is up to you.
+
 - [AngularJS](http://www.angularjs.org)
 - [Developer Guide](https://docs.angularjs.org/guide)
 - [API Reference](https://docs.angularjs.org/api)
