@@ -56,4 +56,4 @@ A zip file that acts as a starting point for an angular application.  It contain
 
 Download and extract the zip, then run `npm install`, `npm test` and `npm start`.
 
-### [Next: Controllers and Markup](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-02.md) ###
+### [Next: Controllers and Markup](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-02.md) ###

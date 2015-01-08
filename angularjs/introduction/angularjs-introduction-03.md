@@ -1,7 +1,7 @@
 AngularJS Introduction : Part Three
 ===================================
 
-### [Prev: Controllers & Markup](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-02.md) ###
+### [Prev: Controllers & Markup](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-02.md) ###
 
 # Services #
 
@@ -95,7 +95,7 @@ eventsApp.controller('EventController', function ($scope, eventData)
 });
 ```
 
->Notice that only built-in services begin with the `$`. Since `eventData` is a custom service, we omit the `$`. 
+>Notice that only built-in services begin with the `$`. Since `eventData` is a custom service, we omit the `$`.
 
 ## Commonly Used Built-In Services ###
 
@@ -252,7 +252,7 @@ eventsApp.controller('EditEventController', function EditEventController ($scope
 
 **Actions**
 
-`$resource` comes with several actions you can use: `get`, `save`,  `query` (same as get but expects array not object), `remove` and `delete`.  You can also create custom actions. See the documentation for more information on that. 
+`$resource` comes with several actions you can use: `get`, `save`,  `query` (same as get but expects array not object), `remove` and `delete`.  You can also create custom actions. See the documentation for more information on that.
 
 ### [$anchorScroll](https://docs.angularjs.org/api/ng/service/$anchorScroll) ###
 
@@ -338,7 +338,7 @@ eventsApp.controller('CacheSampleController', function CacheSampleController($sc
 
 ### [$compile](https://docs.angularjs.org/api/ng/service/$compile) ###
 
-Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. This is not something you would typically use outside of a [directive](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-05.md).
+Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. This is not something you would typically use outside of a [directive](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-05.md).
 
 **CompileSampleController.js**
 ```javascript
@@ -394,7 +394,7 @@ eventsApp.controller('CompileSampleController', function CacheSampleController($
 
 ### [$parse](https://docs.angularjs.org/api/ng/service/$parse) ###
 
-Converts an Angular [expression](https://docs.angularjs.org/guide/expression) into a function. This is not something you would typically use outside of a [directive](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-05.md).
+Converts an Angular [expression](https://docs.angularjs.org/guide/expression) into a function. This is not something you would typically use outside of a [directive](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-05.md).
 
 ```javascript
 var fn = $parse('1 + 2');
@@ -514,7 +514,7 @@ eventsApp.controller('TimeoutSampleController', function TimeoutSampleController
 });
 ```
 
->If you use JavaScripts `setTimeout` method to make changes to the the model (`$scope`), it will happen on a seperate thread, Angular will be unaware of the change and, as a result, will not update the bindings. 
+>If you use JavaScripts `setTimeout` method to make changes to the the model (`$scope`), it will happen on a seperate thread, Angular will be unaware of the change and, as a result, will not update the bindings.
 
 ### [$exceptionHandler](https://docs.angularjs.org/api/ng/service/$exceptionHandler) ###
 
@@ -718,7 +718,11 @@ Gives you access to the Angular root element JavaScript object. Allows you to in
 
 ## Other Built-In Services ##
 
-- `$route`, `$routeParams` and `$location` are discussed in the section on [Routing](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-04.md)
-- `$httpBackend` and `$controller` are discussed in the section on [Testing](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-06.md)
+- `$route`, `$routeParams` and `$location` are discussed in the section on [Routing](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-04.md)
+- `$httpBackend` and `$controller` are discussed in the section on [Testing](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-06.md)
 
-### [Next: Routing](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-04.md) ###
+## Exercises ##
+
+![](https://github.com/scottoffen/ps-notes/blob/master/angularjs/images/angularjs-introduction-03-exercises.png)
+
+### [Next: Routing](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-04.md) ###

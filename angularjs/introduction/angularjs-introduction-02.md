@@ -1,7 +1,7 @@
 AngularJS Introduction : Part Two
 =================================
 
-### [Prev: Introduction](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-01.md) ###
+### [Prev: Introduction](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-01.md) ###
 
 # Controllers & Markup #
 
@@ -93,7 +93,7 @@ var eventsApp = angular.module('eventsApp', ['ngSanitize']);
 
 **EventController.js**
 
-The controller is attached to our module by calling the `controller` function of the module, and passing it a name - which must match the controller name specified in the HTML - and a function. The function takes an empty `$scope` variable as the first parameter. 
+The controller is attached to our module by calling the `controller` function of the module, and passing it a name - which must match the controller name specified in the HTML - and a function. The function takes an empty `$scope` variable as the first parameter.
 
 >Much like jQuery, the $ at the beginning of the variable name indicates that it is a component provided by Angular.
 
@@ -157,7 +157,7 @@ eventsApp.controller('EventController', function ($scope)
 
 ### Built-In Directives ###
 
-Directives are a way to give HTML new functionality. 
+Directives are a way to give HTML new functionality.
 
 **Four Way to Specify Directives**
 
@@ -270,7 +270,7 @@ Filters are a way to tell Angular that you want to modify something for output.
 
 ### Writing Custom Filters ###
 
-Take an existing module and call the `filter` function on it. The two parameters are the name of the filter you want to create and the second is a function. The second function parameter must return another function 
+Take an existing module and call the `filter` function on it. The two parameters are the name of the filter you want to create and the second is a function. The second function parameter must return another function
 
 ```javascript
 module.filter('name', function ()
@@ -281,7 +281,7 @@ module.filter('name', function ()
 		// modify the input and return the modified input
 	}
 });
-``` 
+```
 
 ## Two Way Binding ##
 
@@ -394,4 +394,4 @@ eventsApp.controller('EditEventController', function EditEventController ($scope
 });
 ```
 
-### [Next : Services](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-03.md) ###
+### [Next : Services](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-03.md) ###

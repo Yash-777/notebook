@@ -1,7 +1,7 @@
 AngularJS Introduction : Part Four
 ==================================
 
-### [Prev: Services](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-03.md) ###
+### [Prev: Services](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-03.md) ###
 
 # Routing #
 
@@ -344,7 +344,7 @@ eventsApp.controller('EventController', function EventController ($scope, $route
 	console.log($route.current.params.foo); // Does not work
 ...
 });
-``` 
+```
 
 ### Reloading A Page ###
 
@@ -495,4 +495,8 @@ There are a number of properties you can access that will give you information a
 
 Using `replace()` instead of `url()` will prevent a new entry in the browsers history.
 
-### [Next: Directives](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-05.md) ###
+## Exercises ##
+
+![](https://github.com/scottoffen/ps-notes/blob/master/angularjs/images/angularjs-introduction-04-exercises.png)
+
+### [Next: Directives](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-05.md) ###
