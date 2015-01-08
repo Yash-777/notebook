@@ -497,6 +497,6 @@ Using `replace()` instead of `url()` will prevent a new entry in the browsers hi
 
 ## Exercises ##
 
-![](https://github.com/scottoffen/ps-notes/blob/master/angularjs/images/angularjs-introduction-04-exercises.png)
+![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/angularjs/images/angular-introduction-03-exercises.png)
 
 ### [Next: Directives](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-05.md) ###

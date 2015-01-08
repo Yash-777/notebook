@@ -723,6 +723,6 @@ Gives you access to the Angular root element JavaScript object. Allows you to in
 
 ## Exercises ##
 
-![](https://github.com/scottoffen/ps-notes/blob/master/angularjs/images/angularjs-introduction-03-exercises.png)
+![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/angularjs/images/angular-introduction-04-exercises.png)
 
 ### [Next: Routing](https://github.com/scottoffen/ps-notes/blob/master/angularjs/introduction/angularjs-introduction-04.md) ###
