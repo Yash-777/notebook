@@ -7,7 +7,7 @@ AngularJS Introduction : Part Five
 
 *A.K.A Where The jQuery Goes*
 
-HTML was intended to create static documents, not dynamic documents or web applications. Angular directives are a way to give us *something like* [Web Components](http://www.w3.org/TR/components-intro/) today.
+HTML was intended to create static documents, not dynamic documents or web applications. Angular directives allow you to create highly semantic and reusable components. In a sense you could consider them as the [ultimate precursor](http://www.jvandemo.com/the-nitty-gritty-of-compile-and-link-functions-inside-angularjs-directives/) of [web components](http://www.w3.org/TR/components-intro/).
 
 **Use Directives To:**
 
@@ -722,7 +722,88 @@ In addition to setting the `transclude` property to true, we put the `ng-transcl
 
 ## Using Compile to Transform the DOM ##
 
+We've seen the `link` function used in most of our directives so far - to, for example, observe and respond to changes in the DOM. The `compile` function is similar in that it is used to manipulate the DOM *prior to* the `link` function executing.
+
+**HTML**
+
+```html
+Text to repeat: <input type="text" ng-model="text">
+<div repeat-x="5">{{text}}</div>
+```
+
+**RepeatX.js**
+
+Using the `link` function instead of `compile`.
+
+```javascript
+eventsApp.directive('repeatX', function ($compile)
+{
+    var directive =
+    {
+        restrict : 'A',
+
+        link : function (scope, element, attrs, controller)
+        {
+            for (var i = 0, l = Number(attrs.repeatX) - 1; i < l; i += 1)
+            {
+                element.after($compile(element.clone().attr('repeat-x', 0))(scope));
+            }
+        }
+    };
+
+    return directive;
+});
+```
+
+This works, but the call to the `$compile` service is expensive. Compiling requires the DOM to be traversed and for Angular to look for directives that need to be processed. What we really need is to stamp out *x* number of clones of the template and then let that all be compiled at once. This performance benefit is the major reason why the Angular team chose to break out the `compile` and `link` functions.
+
+**RepeatX.js**
+
+Using the `compile` function.
+
+```javascript
+// I couldn't get this working. I typed in exactly what was on the screen, but it didn't work.
+```
+
 ## Making jQuery More Explicit with Directives ##
 
+Not only can you use jQuery plugins alongside Angular directives, directives can help to make your jQuery plugins more explicit. You can also create jQuery plugin-like functionality purely with directives, although there is nothing wrong with using jQuery plugins with AngularJS.
+
+### Adding a Date Picker ###
+
+Add a date picker to using jQuery UI to the New Event page. Add a reference to jQuery UI in the index.html for this example to work.
+
+**NewEvent.html**
+
+```html
+...
+<label for="eventDate">Event Date:</label>
+<input id="eventDate" type="text" date-picker date-keys required ng-pattern="/\d{2}/\d{2}/\d{4}/" ng-model="event.date" placeholder="format (mm/dd/yyyy)...">
+...
+```
+
+**DatePicker.js**
+
+The new date-picker directive.
+
+```javascript
+eventsApp.directive('datePicker', function ()
+{
+    var directive =
+    {
+        restrict : 'A',
+        link : function (scope, element)
+        {
+            element.datepicker();
+        }
+    };
+
+    return directive;
+});
+```
+
+## Exercises ##
+
+![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/angularjs/images/angular-introduction-04-exercises.png)
 
 ### [Next: Testing](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-06.md) ###
