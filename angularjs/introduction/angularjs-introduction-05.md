@@ -804,6 +804,6 @@ eventsApp.directive('datePicker', function ()
 
 ## Exercises ##
 
-![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/angularjs/images/angular-introduction-04-exercises.png)
+![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/angularjs/images/angular-introduction-05-exercises.png)
 
 ### [Next: Testing](https://github.com/scottoffen/ps-notes/blob/master/angularjs-introduction-06.md) ###
