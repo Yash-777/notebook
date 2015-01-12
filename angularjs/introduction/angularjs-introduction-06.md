@@ -26,19 +26,31 @@ Sinon (Mocking)
 ## Testing Directives ##
 
 ### Overview ###
- 
+
+Overview
+
 ### Setting Up Karma ### 
 
+Setting Up Karma
+
 ### Testing Directives ### 
+
+Testing Directives
 
 ## End To End (E2E) Testing ##
 
 ### Overview ###
 
+Overview
+
 ### Setting Up Karma ###
- 
+
+Setting Up Karma
+
 ### E2E Testing ###
+
+E2E Testing
  
 ### Troubleshooting ###
- 
 
+Troubleshooting
