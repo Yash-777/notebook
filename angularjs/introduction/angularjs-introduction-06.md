@@ -29,11 +29,11 @@ Sinon (Mocking)
 
 Overview
 
-### Setting Up Karma ### 
+### Setting Up Karma ###
 
 Setting Up Karma
 
-### Testing Directives ### 
+### Testing Directives ###
 
 Testing Directives
 
