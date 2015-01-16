@@ -283,6 +283,30 @@ module.filter('name', function ()
 });
 ```
 
+**ExampleFilter.js**
+
+```javascript
+module.filter('myFilter', function ('myService')
+{
+	var filter = function (input, x, y)
+	{
+		return [input,x,y].join(' : ');
+	};
+
+	return filter;
+});
+```
+
+**ExampleFilter.html**
+
+```html
+<div class="{{binding | myFilter:'hey':'ho'}}">
+	Something here...
+</div>
+```
+
+>Whatever is in the scope binding `binding` will match the filter parameter `input`, and `hey` and `ho` will match `x` and `y`, respectively. 
+
 ## Two Way Binding ##
 
 Allows you to use your typical form controls and keep your model up to date automatically.
