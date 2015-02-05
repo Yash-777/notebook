@@ -238,6 +238,13 @@ h1
 
 Use your preferred image editor to create these. They can look however you want, as long as their dimensions are 19x19 and 38x38, respectively. Put these in a subfolder named `img` - which matches the path we specified in our manifest file.
 
+Feel free to use mine, listed here for your convinience:
+
+| File Name  | Icon |
+|------------|------|
+| icon19.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/images/icon19.png) |
+| icon38.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/images/icon38.png) |
+
 ### Using Developer Mode ###
 
 While developing our extension, we're going to want to test it. Put Chrome in developer mode by going to `chrome://extensions` and checking the box at the top labeled *Developer mode* - which should be unchecked by default.
@@ -249,6 +256,8 @@ Once checked, a button bar becomes visible. Click the *Load unpacked extension..
 >We can launch the Chrome developer tool on our extension by right-clicking on inside the pop-up and selecting the *Inspect element* option. This will open the developer tools in a seperate window that will be specific to our extension, not the open browser tab.
 
 ## Browser Action Extension ##
+
+This extension will use the Chrome storage APIs for storing and syncing data, demonstrate how to use the browser action badge, have an options page, and use and event page that runs in the background to register for events.
 
 
 
