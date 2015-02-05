@@ -158,7 +158,7 @@ The following code shows the supported manifest fields for extensions.
 
 ### Browser Action vs Page Action ###
 
-Use a browser action when the extension is relevant to most pages; and a page action when the extensions icon should appear or disappear, depending on the page. Icons for browser actions show up in the toolbar to the right of the omnibox, while icons for page actions show up on the right *inside* of the omnibox. Page actions cannot use badges.
+Use a browser action when the extension is relevant to most pages; and a page action when the extensions icon should appear or disappear, depending on the page. Icons for browser actions show up in the toolbar to the right of the omnibox, while icons for page actions show up on the right *inside* of the omnibox. Page actions cannot use badges and must be explicitly made visible with `show`.
 
 ## Simple "Hello, World" Extension ##
 
@@ -725,7 +725,7 @@ Icons are in the `/img` folder, as specified in our manifest and other locations
 
 ## Page Action Extension ##
 
-todod
+todo
 
 ## Debugging and Deployment ##
 
