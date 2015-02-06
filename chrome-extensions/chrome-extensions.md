@@ -725,7 +725,84 @@ Icons are in the `/img` folder, as specified in our manifest and other locations
 
 ## Page Action Extension ##
 
-todo
+### Tabs ###
+
+Use the [`chrome.tabs`](https://developer.chrome.com/extensions/tabs) API to interact with the browser's tab system. You can use this API to create, modify, and rearrange tabs in the browser. You can use most chrome.tabs methods and events without declaring any permissions in the extension's manifest file. However, if you require access to the url, title, or favIconUrl properties of tabs.Tab, you must declare the "tabs" permission in the manifest.
+
+**Manifest**
+
+```javascript
+{
+	"name" : ...
+
+	"permissions" :
+	[
+		"tabs"
+	]
+}
+```
+
+**JavaScript**
+
+```javascript
+chrome.tabs.query({ active : true, currentWindow : true }, function (tabs)
+{
+	// because there is only one active page in the current window
+	chrome.pageAction.show(tabs[0].id);
+});
+```
+
+### Content Scripts ###
+
+[Content scripts](https://developer.chrome.com/extensions/content_scripts) are JavaScript files that run in the context of web pages. By using the standard Document Object Model (DOM), they can read details of the web pages the browser visits, or make changes to them.
+
+Here are some examples of what content scripts can do:
+
+- Find unlinked URLs in web pages and convert them into hyperlinks
+- Increase the font size to make text more legible
+- Find and process [microformat](http://microformats.org/) data in the DOM
+
+However, content scripts have some limitations. They cannot:
+
+- Use `chrome.*` APIs, with the exception of:
+	- `extension` ( getURL , inIncognitoContext , lastError , onRequest , sendRequest )
+	- `i18n`
+	- `runtime` ( connect , getManifest , getURL , id , onConnect , onMessage , sendMessage )
+	- `storage`
+- Use variables or functions defined by their extension's pages
+- Use variables or functions defined by web pages or by other content scripts
+
+These limitations aren't as bad as they sound. Content scripts can indirectly use the `chrome.*` APIs, get access to extension data, and request extension actions by exchanging [**messages**](https://developer.chrome.com/extensions/messaging) with their parent extension. Content scripts can also make [**cross-site XMLHttpRequests**](https://developer.chrome.com/extensions/xhr) to the same sites as their parent extensions, and they can [**communicate with web pages**](https://developer.chrome.com/extensions/content_scripts#host-page-communication) using the shared DOM. For more insight into what content scripts can and can't do, learn about the [**execution environment**](https://developer.chrome.com/extensions/content_scripts#execution-environment).
+
+**Manifest**
+
+```javascript
+{
+	"name" : ...
+
+	"content_scripts" :
+	[
+		{
+			"matches" : [ "http://www.google.com/*" ],
+			"css"     : [ "mystyles.css" ],
+			"js"      : [ "jquery.js", "myscript.js" ]
+		}
+	]
+}
+```
+
+If you want to inject the code only sometimes, use the permissions field instead, as described in [**Programmatic injection**](https://developer.chrome.com/extensions/content_scripts#pi).
+
+```javascript
+{
+	"name": ...
+
+	"permissions":
+	[
+		"tabs", "http://www.google.com/*"
+	]
+}
+```
 
 ## Debugging and Deployment ##
 
