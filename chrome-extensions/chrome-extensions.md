@@ -804,6 +804,171 @@ If you want to inject the code only sometimes, use the permissions field instead
 }
 ```
 
-## Debugging and Deployment ##
+### Messaging ###
 
-todo
+Since content scripts run in the context of a web page and not the extension, they often need some way of communicating with the rest of the extension. For example, an RSS reader extension might use content scripts to detect the presence of an RSS feed on a page, then notify the background page in order to display a page action icon for that page.
+
+Communication between extensions and their content scripts works by using [message passing](https://developer.chrome.com/extensions/messaging). Either side can listen for messages sent from the other end, and respond on the same channel. A message can contain any valid JSON object (null, boolean, number, string, array, or object). 
+
+>In addition to sending messages between different components in your extension, you can use the messaging API to [communicate with other extensions](https://developer.chrome.com/extensions/messaging#external). This lets you expose a public API that other extensions can take advantage of.
+
+### Extension Files ###
+
+There is a dark serial on the internet I like to read called [The Zombie Knight](http://thezombieknight.blogspot.com/2013/04/page-1.html "You should totally read this, too!"). While I otherwise enjoy the writing, I'd prefer to read it without the profanity. So, I wrote a page extension that only works on that site, and replaces the profanity with other words.
+
+**manifest.json**
+
+It would appear that the order in which content scripts are listed in the array is important. When I listed jQuery last, my other scripts didn't have access to the global jQuery variable ($).
+
+```javascript
+{
+	"manifest_version" : 2,
+
+	"name"        : "TZK ClearPlay",
+	"description" : "Cleans up the language on the dark serial The Zombie Knight",
+	"version"     : "1.0",
+
+	"page_action" :
+	{
+		"default_icon":
+		{
+			"19": "img/sword-19.png",
+			"38": "img/sword-38.png"
+		},
+		"default_title": "TZK ClearPlay"
+	},
+
+	"background" :
+	{
+		"scripts"    : [ "/js/events.js" ],
+		"persistent" : false
+	},
+
+	"content_scripts" :
+	[
+		{
+			"matches" : [ "http://thezombieknight.blogspot.com/*" ],
+			"js"      : [ "/js/jquery.min.js", "/js/clearplay.js" ]
+		}
+	],
+
+	"permissions" :
+	[
+		"tabs",
+		"http://thezombieknight.blogspot.com/*"
+	],
+
+	"icons" :
+	{
+		"16"  : "img/sword-16.png",
+		"48"  : "img/sword-48.png",
+		"128" : "img/sword-128.png"
+	}
+}
+```
+
+**events.js**
+
+```javascript
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse)
+{
+	if ((request.action) && (request.action === 'show'))
+	{
+		chrome.tabs.query({ active : true, currentWindow : true }, function (tabs)
+		{
+			chrome.pageAction.show(tabs[0].id);
+		});
+	}
+});
+```
+
+**clearplay.js**
+
+```javascript
+chrome.runtime.sendMessage({ action : "show" });
+
+$(document).ready(function ()
+{
+	var $post  = $('.post-body');
+
+	$post.html(cleanText($post.html()));
+
+	alert('clean');
+});
+
+
+function cleanText(html)
+{
+	html = html.replace(/fuck/gi, 'fart');
+
+	return html;
+}
+```
+
+**Icons**
+
+| File Name  | Icon |
+|------------|------|
+| icon-pt-16.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/chrome-extensions/TZKClearPlay/img/sword-16.png) |
+| icon-pt-19.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/chrome-extensions/TZKClearPlay/img/sword-19.png) |
+| icon-pt-38.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/chrome-extensions/TZKClearPlay/img/sword-38.png) |
+| icon-pt-48.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/chrome-extensions/TZKClearPlay/img/sword-48.png) |
+| icon-pt-128.png | ![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/chrome-extensions/TZKClearPlay/img/sword-128.png) |
+
+## Debugging ##
+
+Chrome extensions can be debugged just like any other web page using the [Chrome Developer Tools](https://developer.chrome.com/devtools), except that the developer tools have to be opened inside the context of the extension.
+
+**Developer Tools Context**
+
+- **Popup and Options:** Simply right click in the visible area and select *Inspect element* from the context menu to open the developer tools in the context of those pages. For popups, you can also right click on the icon for the pluging and select *Inspect popup*.
+
+- **Background Pages:** On the `chrome://extensions` page, under each extension that's using a background page, will be an option to open the developer tools in the context of the background running page.
+
+- **Context Scripts:** As these are inserted onto the page, they can be debugged right from the developer tools for the page you're viewing.
+
+>The Chrome Developers Tools will also allow you explore the chrome API in the console.
+
+See the content of any page you are trying to debug by going to the page in the browser using the `chrome-*` protocol in the omnibar.
+
+```
+chrome-extension://[extension-id]/js/events.js
+```
+
+## Packaging ##
+
+To package an extension, use the *Pack extension...* button on the extension page in chrome and browse to the directory where your extension is located.
+
+![](https://raw.githubusercontent.com/scottoffen/ps-notes/master/chrome-extensions/developer-mode.png)
+
+This will automatically package the `.CRX` file for you.  The first time you package an extension, you do not provide a key (`.PEM`) file, as that will be generated. It needs to be kept because it contains the **private** key used to sign the extension. If you want to update the extension, you will need that file.
+
+## Deployment ##
+
+There are three main way to deploy your extension.
+
+### Self Hosted ###
+
+[Hosting](https://developer.chrome.com/extensions/hosting)
+[Autoupdate](https://developer.chrome.com/extensions/autoupdate)
+
+>As of Chrome 33, Windows stable/beta channel users can only download extensions hosted in the Chrome Web store, except for installs via [enterprise policy](https://support.google.com/chrome/a/answer/188453) or developer mode (see [Protecting Windows users from malicious extensions](http://blog.chromium.org/2013/11/protecting-windows-users-from-malicious.html)). You can still create your own .crx file and use it for testing in the dev channel, but you can't host that file on your own server.
+
+### Chrome Web Store ###
+
+Login to the [Chrome Developer Dashboard](https://chrome.google.com/webstore/developer/dashboard) and upload the extension directory.
+
+Using this method, the developer site will generate and keep track of your private key files for you. After upload, you can edit all the details about your extension - including promotional tile images and a link to a YouTube video!
+
+You can limit visibility (who can download/install/use) of your extension and limit it to people with the link or a Google Group for Trusted Testers.
+
+### Inline Installation ###
+
+The [inline installation](https://developer.chrome.com/webstore/inline_installation) allows you to host the extension in the Chrome Web Store, but include code on our site to allow people to install it directly from our site. Requires that the extension is already in the Chrome Web Store.
+
+
+### Analytics ###
+
+You can use [Google Analytics](http://www.google.com/analytics/) to track downloads and usage of your extension. Check out [this tutorial](https://developer.chrome.com/extensions/tut_analytics).
+
+<!-- http://www.pluralsight.com/courses/google-analytics -->

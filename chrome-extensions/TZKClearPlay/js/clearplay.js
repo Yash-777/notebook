@@ -12,7 +12,7 @@ $(document).ready(function ()
 
 function cleanText(html)
 {
-	html = html.replace(/fuck/gi, 'flip');
+	html = html.replace(/fuck/gi, 'fart');
 
 	return html;
 }
