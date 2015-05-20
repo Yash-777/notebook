@@ -3,7 +3,9 @@ Git Introduction
 
 Git is an open source distributed version control system (DVCS) created by [Linus Torvalds](http://en.wikipedia.org/wiki/Linus_Torvalds) in 2005 for the Linux kernal, and is written in Perl and C.
 
-**Triva**: The [source code for Git](https://github.com/git/git) is hosted on Github site. 
+**Triva**: The [source code for Git](https://github.com/git/git) is hosted on a GitHub site. 
+
+>Using GitHub? See a [cheat-sheet here](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
 
 ##Installation##
 
