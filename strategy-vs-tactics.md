@@ -18,23 +18,12 @@ Organizations need big wings (strategic thinking) and feet (capability to achiev
 
 Specific examples across different industries of how strategic goals can be communicated with clear tactical elements, in a linear and logical order:
 
-- **Strategy**: Be the market share leader in terms of sales in the mid-market in our industry.
-- **Tactics**: Offer lower cost solutions than enterprise competitors without sacrificing white-glove service for first 3 years of customer contracts.
-
-
-- **Strategy**: Maneuver our brand into top two consideration set of household decision makers.
-- **Tactics**: Deploy a marketing campaign that leverages existing customer reviews and spurs them to conduct word of mouth with their peers in online and real world events.
-
-
-- **Strategy**: Improve retention of top 10% of company performers.
-- **Tactics**: Offer best in market compensation plan with benefits as well as sabbaticals to tenured top performers, source ideas from top talent.
-
-
-- **Strategy**: Connect with customers while in our store and increase sales.
-- **Tactics**: Offer location based mobile apps on top three platforms, and provide top 5 needed use cases based on customer desire and usage patterns.
-
-
-- **Strategy**: Become a social utility that earth uses on an daily basis.
-- **Tactics**: Offer a free global communication toolset that enables disparate personal interactions with your friends to monitor, share, and interact with.
+| Strategy | Tactic |
+|----------|--------|
+|Be the market share leader in terms of sales in the mid-market in our industry.|Offer lower cost solutions than enterprise competitors without sacrificing white-glove service for first 3 years of customer contracts.|
+|Maneuver our brand into top two consideration set of household decision makers.|Deploy a marketing campaign that leverages existing customer reviews and spurs them to conduct word of mouth with their peers in online and real world events.|
+|Improve retention of top 10% of company performers.|Offer best in market compensation plan with benefits as well as sabbaticals to tenured top performers, source ideas from top talent.|
+|Connect with customers while in our store and increase sales.|Offer location based mobile apps on top three platforms, and provide top 5 needed use cases based on customer desire and usage patterns.|
+|Become a social utility that earth uses on an daily basis.|Offer a free global communication toolset that enables disparate personal interactions with your friends to monitor, share, and interact with.|
 
 [Source](http://www.web-strategist.com/blog/2013/01/14/the-difference-between-strategy-and-tactics/)
