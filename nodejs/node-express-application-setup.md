@@ -3,15 +3,18 @@ Node.js and Express Application Setup
 
 Node.js® is a platform built on [Chrome's JavaScript runtime](https://code.google.com/p/v8/) for easily building fast, scalable network applications. Node.js uses an [event-driven](https://strongloop.com/strongblog/node-js-event-loop/), [non-blocking I/O](https://en.wikipedia.org/wiki/Asynchronous_I/O) model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
+![Node.js Event Loop](./images/node.js-event-loop.png)
+*Source: [Intro to Node.JS for .NET Developers](http://www.aaronstannard.com/intro-to-nodejs-for-net-developers/)*
+
 Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
 The following steps will walk you through setting up a Node.js and Express application development environment. Unless otherwise noted, no specific tools or IDEs are required.
 
 ### Steps ###
 
-1. Install Node.js
+1. [Install Node.js](#install-node.js)
 2. Install Express
-3. Generate Express Application
+3. [Generate Express Application](#generate-an-express-application)
 4. Configure Express Application
 5. Include static resources
 6. Running and Monitoring
