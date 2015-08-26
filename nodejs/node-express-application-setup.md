@@ -3,9 +3,20 @@ Node.js and Express Application Setup
 
 *How To set up a Node.js and Express application and development environment on a Windows PC.*
 
-> Download the source code on GitHub
+### Table of Contents ###
 
-### Background and Prerequisites ###
+1. [Background and Prerequisites](#background-and-prerequisites)
+2. [Install Node.js and npm](#install-node.js-and-npm)
+3. [Install Express Application Generator](#install-express-application-generator)
+4. [Generate An Express Application](#generate-an-express-application)
+5. [Configure The Express Application](#configure-the-express-application)
+6. [Running and Monitoring](#running-and-monitoring)
+7. [Including Static Resources](#including-static-resources)
+8. [More Express Customization](#more-express-customization)
+9. [Topics Coming Soon](#topics-coming-soon)
+
+
+# Background and Prerequisites #
 
 **Node.js®** (Node) is a platform built on [Chrome's JavaScript runtime](https://code.google.com/p/v8/) for easily building fast, scalable network applications. Node.js uses an [event-driven](https://strongloop.com/strongblog/node-js-event-loop/), [non-blocking I/O](https://en.wikipedia.org/wiki/Asynchronous_I/O) model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices. **Express** is a minimal and flexible Node web application framework that provides a robust set of features for web and mobile applications.
 
@@ -15,16 +26,15 @@ To use Node you must type command-line instructions, so you need to be comfortab
 
 While no specific IDE is required, you will need a text editor. My preference is [Sublime Text](http://www.sublimetext.com/3), and you can find my [installation and configuration instructions on my website](http://scottoffen.com/2015/03/02/sublime-text-3-for-developers/).
 
-### Table of Contents ###
+## A Note About io.js ##
 
-1. [Install Node.js and npm](#install-node.js-and-npm)
-2. [Install Express Application Generator](#install-express-application-generator)
-3. [Generate An Express Application](#generate-an-express-application)
-4. [Configure The Express Application](#configure-the-express-application)
-5. [Running and Monitoring](#running-and-monitoring)
-6. [Including Static Resources](#including-static-resources)
-7. [More Express Customization](#more-express-customization)
-8. [Topics Coming Soon](#topics-coming-soon)
+*Purely FYI, this has absolutely no bearing on how we are going to install and use Node or Express.*
+
+**io.js** began as a fork of Node and is compatible with the npm ecosystem. It's goal was to continue development under an "open governance model" as opposed to the corporate stewardship model used by [Joyent](https://www.joyent.com/) with Node.
+
+In its role as steward, Joyent's task was to keep Node on track and ensure its consistent development. In 2014 talks of a possible split from Node.js began, and reached critial mass as development of the framework continued to slow and talks broke down with Joyent.
+
+Eventually, io.js was born. Finally, after months of pressure, [Joyent has backed down as steward](http://www.linuxfoundation.org/news-media/announcements/2015/06/nodejs-foundation-advances-community-collaboration-announces-new) and handed Node off to an independent organization, and the io.js and Node.js codebases will be merged and become a single offering once more.
 
 # Install Node.js and npm #
 
@@ -85,16 +95,6 @@ $ npm install nodemon -g
 ## Install Python 2.7 ##
 
 While Node does not require Python to be installed, some modules requires [Python (version 2.7)](https://www.python.org/downloads/) to be installed and the path to Python be available via a System Environment Variable named `PYTHON` in order to build and install. We can wait until we get an error that requires us to do this, or we can preemptively install the language and add the environment variable. I would recommend a preemptive course of action.
-
-## A Note About io.js ##
-
-*Purely FYI, this has absolutely no bearing on how we are going to install and use Node or Express.*
-
-**io.js** began as a fork of Node and is compatible with the npm ecosystem. It's goal was to continue development under an "open governance model" as opposed to the corporate stewardship model used by [Joyent](https://www.joyent.com/) with Node.
-
-In its role as steward, Joyent's task was to keep Node on track and ensure its consistent development. In 2014 talks of a possible split from Node.js began, and reached critial mass as development of the framework continued to slow and talks broke down with Joyent.
-
-Eventually, io.js was born. Finally, after months of pressure, [Joyent has backed down as steward](http://www.linuxfoundation.org/news-media/announcements/2015/06/nodejs-foundation-advances-community-collaboration-announces-new) and handed Node off to an independent organization, and the io.js and Node.js codebases will be merged and become a single offering once more.
 
 # Install Express Application Generator #
 
@@ -242,7 +242,6 @@ In addition to these dependencies, the following are useful for creating robust 
 | Module | Description  |
 |--------|--------------|
 | [compression](https://www.npmjs.com/package/compression) | Middleware to compress the HTTP response. |
-| [method-override](https://www.npmjs.com/package/method-override) | Middleware to allow you to use HTTP verbs such as PUT or DELETE in places where the client doesn't support it. |
 | [multer](https://www.npmjs.com/package/multer) | Middleware for handling multipart/form-data, which is primarily used for uploading files. |
 
 > While the order of the dependencies in the `package.json` file does not matter, the order in which the middleware is loaded in and added to Express **does** matter.
@@ -255,7 +254,7 @@ The default start script is `node ./bin/www`, and identifies that script as our 
 
 # Configure The Express Application #
 
-As the app structure generated by the generator is just one of the multiple ways of structuring Express apps, we should feel free to not use it or to modify it to best suit our needs. The changes to the structure and layout of the project feels more natural to me.
+As the app structure generated by the generator is just one of the multiple ways of structuring Express apps, we should feel free to not use it or to modify it to best suit our needs. The changes below to the structure and layout of the project improves the organization for an MVC application.
 
 ### Rename ###
 
@@ -266,7 +265,7 @@ Rename the following files:
 
 ### Reorganize ###
 
-Reorganize the files and folders to match this structure, creating new folders as needed.
+Reorganize the files and folders to match this structure, creating or deleting folders as needed.
 
 ```
 .
@@ -308,7 +307,7 @@ Because we moved `server.js` out of `./bin` (and subsequently deleted the empty 
 
 ### Modify `server.js` ###
 
-Because we moved and renamed `app.js` to `express.js`, which tells our server how to configure express, we'll need to update our `server.js` file with the new location. Fine the line near the top of this file (mine is on line 7) that looks like this:
+Because we moved and renamed `app.js` to `express.js`, which tells our server how to configure express, we'll need to update our `server.js` file with the new location. Find the line near the top of this file (mine is on line 7) that looks like this:
 
 ```javascript
 var app = require('../app');
@@ -322,7 +321,7 @@ var app = require('./app/config/express');
 
 ### Modify `express.js` ###
 
-Because we moved our routes and templates into our new `app` folder, we also need to update `express.js` to reflect their new locations. These line are most likely together, but I'll call out the changes one at a time.
+Because we moved our routes and templates into our new `app` folder, we also need to update `express.js` to reflect their new locations. These line are most likely together, but I'll call out the changes to them seperately.
 
 **Routes**
 
@@ -358,7 +357,7 @@ app.set('views', './app/views');
 
 # Running and Monitoring #
 
-With these changes made, we are ready to fire up our baseline express application. Remember those two lines the generator told us to use that I recommended we not do yet? Yeah, it's time to use those.
+With these changes made, we are ready to fire up our baseline Express application. Remember those two lines the generator told us to use that I recommended we not do yet? Yeah, it's time to use those.
 
 ## Installing Dependencies ##
 
@@ -370,13 +369,13 @@ $ npm install
 
 The dependencies listed in the dependencies section of your `package.json` file will be downloaded and placed in a folder named `./node_modules`, which will be created in your application directory.
 
-In the future, as we add new dependencies to our application via changes to the `package.json` file, we can either:
+In the future, when we need to add new dependencies to our application, we can either:
 
-- Run `npm install` again
-- Run `npm update`
-- Install our dependencies using `npm install [module] --save`, which will automatically add the dependency to the `package.json` file for us.
+- Add the dependency to `package.json` and run `npm install` again, or
+- Install our dependency using `npm install [module] --save`, which will automatically add the dependency to the `package.json` file for us, or
+- Install our dependency using `npm install [module]`, noting which version it installed, and add the dependency to the `package.json` manually 
 
-Of these options, I loath the last one, because it reformats the `package.json` file, and I'm a stickler about how my files are formatted.
+Of these options, I generally prefer the last one, unless I need a specific (older) version of a module.
 
 ## Running The Application ##
 
@@ -408,7 +407,7 @@ $ DEBUG=[your app name]:* npm start
   [your app name]:server Listening on port 3000 +0ms
 ```
 
-Finally, there is an even better way to run our server during our development cycles, and that is to `nodemon`, one of the Node modules we installed early on. When coupled with `DEBUG`, our server gives becomes pleasantly verbose during the starting up phase.
+Finally, there is an even better way to run our server during our development cycles, and that is to use `nodemon`, one of the Node modules we installed early on. When coupled with `DEBUG`, our server becomes pleasantly verbose during the starting up phase.
 
 ```
 $ DEBUG=[your app name]:* nodemon
@@ -419,12 +418,11 @@ $ DEBUG=[your app name]:* nodemon
   [your app name]:server Listening on port 3000 +0ms
 ```
 
-The server should now be up and running at http://localhost:3000. If we open that in a browser window, we'll see additional output provided by the morgan middleware, tell us all about the requests it's received:
+The server should now be up and running at http://localhost:3000. If we open that in a browser window, we'll see additional output provided by the `morgan` middleware, telling us all about the requests it's received:
 
 ```
 GET / 200 37.975 ms - 170
 GET /stylesheets/style.css 404 26.891 ms - 1140
-GET /favicon.ico 404 17.190 ms - 1140
 GET /favicon.ico 404 10.853 ms - 1140
 ```
 
@@ -448,7 +446,7 @@ rs
 
 Static resources are binary files (such as images or compressed files), stylesheets and JavaScript or HTML files that don't need to be processed by Node before returning them to the client. Put these files in the `public` folder, and they will be served up automatically.
 
-The express application generator creates the subfolders `images`, `stylesheets` and `javascripts` for you, but you don't have to use them. You can make any changes to this items in the public folder without making any changes to your express application.
+The Express Application Generator creates the subfolders `images`, `stylesheets` and `javascripts` for you, but you don't have to use them. You can make any changes to the items in the public folder without making any changes to your Express application.
 
 > The (seemingly) obvious exception, of course, would be where Jade templates reference JavaScript, stylesheet and images in the public folders. However, one could make the case that updating template files used by the application isn't the same as changing the application code. 
 
@@ -645,7 +643,6 @@ var logger         = require('morgan');
 var cookieParser   = require('cookie-parser');
 var bodyParser     = require('body-parser');
 var multer         = require('multer');
-var methodOverride = require('method-override')
 var compress       = require('compression');
 var favicon        = require('serve-favicon');
 /**********************************************************************************/
@@ -678,7 +675,6 @@ module.exports = function ()
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(multer());
-	app.use(methodOverride());
 	app.use(cookieParser());
 	app.use(express.static(path.join(global.path.public)));
 
@@ -692,12 +688,14 @@ module.exports = function ()
 			var route    = '/' + (file.split('.'))[0];
 			var resource = path.join(routes, file);
 
-			app.use(route, require(resource));
-
 			if (route === '/index')
 			{
 				app.use('/', require(resource));
 				app.use(route + '.html', require(resource));
+			}
+			else
+			{
+				app.use(route, require(resource));
 			}
 
 			debug('added route : ' + route);
@@ -775,12 +773,14 @@ fs.readdirSync(routes).forEach(function (file)
 		var route    = '/' + (file.split('.'))[0];
 		var resource = path.join(routes, file);
 
-		app.use(route, require(resource));
-
 		if (route === '/index')
 		{
 			app.use('/', require(resource));
 			app.use(route + '.html', require(resource));
+		}
+		else
+		{
+			app.use(route, require(resource));
 		}
 
 		debug('added route : ' + route);
@@ -788,7 +788,7 @@ fs.readdirSync(routes).forEach(function (file)
 });
 ```
 
-The convention used is that our routes should be named using the pattern `[resource].route.js`. If you want to have files in the routes folder, but not use them as routes, just exclude the word "route" from the file name. The `[resource]` part of the file name will be used to route traffic to routes defined in that route file. So, all traffic to `/users` will be routed to the routes in the file `user.route.js`.
+The convention used is that our routes should be named using the pattern `[resource].route.js`. If you want to have files in the routes folder, but not use them as routes, just exclude the word "route" from the file name. The `[resource]` part of the file name will be used to route traffic to routes defined in that route file. So, all traffic to `/user` will be routed to the routes in the file `user.route.js`.
 
 We also treat the file `index.route.js` a little differently, allowing it to respond to `/` and `/index.html`, as it is less likely that we really want to expose a resourse at `/index`.
 
