@@ -69,7 +69,7 @@ describe("Calculator", function () // Define a test suite
 		<script src= "./js/vendor/mocha.js" />
 		<script src= "./js/calculator.js" />
 		<script>
-			mocha.setup("bdd");
+			mocha.setup({ ui : "bdd", bail : false });
 		</script>
 		<script src= "./js/test/calculator-tests.js" />
 		<script>
@@ -408,7 +408,7 @@ nextBirthday : function (date)
 
 # Unit Test Your Front-End App #
 
-## Mocha ##
+## [Mocha](https://mochajs.org/) ##
 
 - Cross browser and Node Support
 - Simple Async Support
@@ -432,7 +432,48 @@ afterEach(function () { /* Runs after each test */ });
 after(function () { /* Runs once after the suite */ });
 ```
 
+### [Expect](https://github.com/Automattic/expect.js) Assertion Library ###
+
+Minimalistic BDD assertion toolkit (based on [should.js](https://github.com/shouldjs/should.js)) with browser and Node.js support.
+
+```javascript
+expect(variable).to.be(value);
+expect(variable).to.eql(value);
+expect(variable).to.be.a(type);
+expect(variable).to.be.an(type);
+expect(variable).not.to.be.an(type);
+```
+
+### Mocha Setup ###
+
+You can change how Mocha is configured using the `.setup` method.
+
+```javascript
+mocha.setup(
+{
+	ui          : "bdd", //"tdd", "exports"
+	reporter    : "mocha.reporters.Dot", // for terminal
+	globals     : ["jQuery"], // array of acceptable globals
+	timeout     : 3000, // how long in ms to wait before assuming test has failed
+	bail        : false, // bail on the first test failure
+	slow        : 2000, // ms to wait before test is slow
+	ignoreLeaks : true, // ignore global variable leaks
+	grep        : "" // string or regexp to filter tests with
+});
+```
+
+### Pending Tests ###
+
+Specification that haven't been flushed out yet.
+
+```javascript
+it("should return NaN if passed 0 arguments");
+it("should return NaN if passed 1 argument");
+```
+
 ## Simple Tests ##
+
+### Exclusive Tests ###
 
 
 
