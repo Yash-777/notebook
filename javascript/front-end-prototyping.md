@@ -670,7 +670,61 @@ describe("Generic Test Suite", function ()
 
 ## Getting Started with Grunt ##
 
+Grunt is going to allow us to run our tests from the command line.
 
+- JavaScript Task Runner
+- Runs on Node
+- Automates repetitive tasks
+- Supports Plugins for CI components like CoffeeScript, LESS, JSHint, etc.
+- Active community
+- Many well know projects use it (jQuery, Bootstrap, etc.)
+
+Install Grunt globally:
+
+```
+$ npm install -g grunt-cli
+```
+
+Once you have your project set up, install grunt to your project.
+
+```
+$ npm install grunt-contrib-jshint --save-dev
+```
+
+Which will add the  grunt dependencies to the `devDependencies` section of `package.json`.
+
+```javascript
+{
+	...
+	"devDependencies" :
+	{
+		"grunt"                : "~0.4.1",
+		"grunt-contrib-jshint" : "~0.1.1",
+		"grunt-contrib-uglify" : "~0.2.0",
+		"grunt-mocha"          : "~0.3.1"
+	}
+}
+```
+ 
+And add a `grunt-file.js` file to your project. This wil tell grunt what to do when you run the `grunt` command in the the project directory. This file looks just like a Node.js module.
+
+```javascript
+module.exports = function (grunt)
+{
+	grunt.initConfig(
+	{
+		pkg    : grunt.file.readJSON("package.json"),
+		jshint : {/*...options...*/},
+		uglify : {/*...options...*/},
+		mocha  : {/*...options...*/}
+	});
+
+	grunt.loadNpmTasks("grunt-contrig-jshint");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-mocah");
+	grunt.registerTask("default", ["jshint", "uglify", "mocha"]);
+};
+```
 
 ## Running Tests Automatically ##
 
