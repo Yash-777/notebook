@@ -473,13 +473,200 @@ it("should return NaN if passed 1 argument");
 
 ## Simple Tests ##
 
+### Reveal ###
+
+Click on a test to see the code that was executed for that specific test.
+
 ### Exclusive Tests ###
 
+*Temporarily* run only the tests you want by appending the `.only` method to a suite, specification or test. Only those tests will be executed. Make sure to remove this method when you are done.
 
+**Suite or Specification**
+```javascript
+describe.only("Add", function () // only the Add specification will be run
+{
+	/* Add Tests */
+});
+
+describe("Subtract", function () // the Subtract specification will not be run
+{
+	/* Subtract Tests */
+});
+```
+
+**Individual Tests**
+
+```javascript
+describe("Add", function ()
+{
+	it.only("should tests something", function () // only this test will be run
+	{
+		/* the test to run */
+	});
+
+	/* more tests that will not be run */
+});
+```
+
+### Skip Tests ###
+
+The inverse of the `.only` method, the `.skip` method will skip all tests in the suite, specification or test.
+
+**Suite or Specification**
+```javascript
+describe.skip("Add", function () // skips the Add specification
+{
+	/* Add Tests */
+});
+
+describe("Subtract", function () // the Subtract specification will still be run
+{
+	/* Subtract Tests */
+});
+```
+
+**Individual Tests**
+
+```javascript
+describe("Add", function ()
+{
+	it.skip("should tests something", function () // this unit test will be skipped
+	{
+		/* the test to run */
+	});
+
+	/* more tests that will not be skipped */
+});
+```
+
+### Grep ###
+
+For client-side, [grep can be applied as a URL parameter](https://mochajs.org/#running-mocha-in-the-browser) to filter which tests should be run. 
 
 ## Asynchronous Tests ##
 
+For Mocha to test asynchronous methods, we have to tell it when the determine that the test has passed or failed. We do this by passing a callback parameter to our unit test and invoking it when we are done. Here, we'll call that callback `done`.
 
+```javascript
+var poll =
+{
+	ping : function (pong)
+	{
+		setTimeout(function ()
+		{
+			pong("Pong!");
+		}, 500);
+	}
+};
+
+describe("Refresh", function ()
+{
+	it.("should update in 500 ms", function (done)
+	{
+		poll.ping(function(message)
+		{
+			expect(message).to.be("Pong!");
+			done(); // here is where we invoke it
+		});
+	});
+});
+``` 
+
+### Animations ###
+
+Asynchronous animation can be testing by having the animation methods return the [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) of the animation. 
+
+```javascript
+var view =
+{
+	$el  : $("#main");
+	show : function ()
+	{
+		return this.$el.fadeIn(250).promise();
+	}
+};
+
+describe("View", function ()
+{
+	it("should show in 250ms", function (done)
+	{
+		view.show().then(function() // because show() returns a promise
+		{
+			expect(view.$el.css("display").to.be("block"));
+			done(); // and now we tell mocha we're done
+		});
+	});
+});
+```
+
+### Ajax ###
+
+Promises also allow us to run our unit test on Ajax requests.
+
+```javascript
+var getTemplate = function (path, callback)
+{
+	return $.ajax({ url : path });
+};
+
+describe("getTemplate", function ()
+{
+	it("should get template via Ajax", function (done)
+	{
+		getTemplate("list.html").then(function (t)
+		{
+			expect(t).to.be.ok();
+			done();
+		});
+	});
+});
+```
+
+### Deferred ###
+
+Of course, deferred is going to work the same way.
+
+```javascript
+function deferredRefresh ()
+{
+	return $.Deferred(function (dfd)
+	{
+		setTimeout(function ()
+		{
+			dfd.resolve("Ping!");
+		}, 500);
+	}).promise();
+}
+
+describe("Refresh", function ()
+{
+	it("should update in 500 ms", function (done)
+	{
+		deferredRefresh().then(function(message)
+		{
+			expect(message).to.be("Ping!");
+		});
+		done();
+	});
+});
+```
+
+### Timeouts ###
+
+Sometimes your test will take longer than Mocha's globally configured timeout setting. This can be configured in an ad hoc fashion to only impact specific tests.
+
+```javascript
+describe("Generic Test Suite", function ()
+{
+	this.timeout(4000); // Change the timeout for all tests in this suite
+
+	it("should be generic", function (done)
+	{
+		this.timeout(1500); // Change the timeout for just this one test
+		/* actual test goes here*/
+	});
+});
+```
 
 ## Getting Started with Grunt ##
 
