@@ -138,7 +138,7 @@ The organization structure I've adopted and that will be evangalized here looks 
 └── server.js
 ```
 
-This centralizes all your application code in the `app` folder, segregates the concerns, and moves the entry point to your application into the root folder. Of importance to note:
+This centralizes all your application code in the `app` folder, segregates the concerns, and moves the entry point of your application into the root folder. Of importance to note:
 
 - Rename/move `./bin/www` to `./server.js`
 - Rename/move `./app.js` to `./app/config/express.js`
@@ -147,7 +147,7 @@ After which you will need to update both files as well as the `package.json` to 
 
 # Be Idiomatic #
 
-The the start script (server.js) should call the required configuration scripts and start the server in around 100 lines, should be easy to read, and should rarely be modified
+Your application entry point (`server.js`) should call the required configuration scripts and start the server in around 100-200 lines. It should be easy to read, and should rarely be modified.
 
 http://stackoverflow.com/questions/11716421/difference-between-npm-start-node-app-js-when-starting-app
 
@@ -167,7 +167,7 @@ nodemon is great in development. forever does something very similar, but in pro
 
 # Use Configuration Files #
 
-speaking of configuration files, modules that require configuration should have their own configuration scripts (mongoose, passport, seraph, etc.) that get called by the start script
+speaking of configuration files, modules that require configuration should have their own configuration scripts (mongoose, passport, seraph, socket.io etc.) that get called by the start script
 
 
 # Find Stuff Easier #
