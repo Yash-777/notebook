@@ -75,7 +75,7 @@ As Scrum principles are centered around self-organizing teams, only three roles 
 
 > In general, the community is shifting away from the term 'commit' in favor of the word 'forecast', acknowledging the inherit uncertainty embraced by agility in software development.
 
-- ** Scrum Master **
+- **Scrum Master**
 *The Scrum Master does not manage the team. The Scrum Master works to remove any impediments that are obstructing the team from achieving its sprint goals. This helps the team remain creative and productive while making sure its successes are visible to the Product Owner.*
 	- Facilitates the Scrum process.
 	- Helps resolve impediments.
