@@ -177,7 +177,7 @@ These links are incredibly useful to teams just getting started and need help fi
 
 Facilitated by the Scrum Master and held at the beginning of each sprint, this meeting is where the Product Owner and the Development Team negotiate which PBIs they will attempt to convert to working product during the sprint. The product owner sets the priorities (while the Backlog Grooming should have taken care of most of that), and the development team selects the amount of work they feel they can implement without accruing [technical debt](https://en.wikipedia.org/wiki/Technical_debt).
 
-When teams are given complex work that has inherent uncertainty, they must work together to intuitively gauge their capacity to commit to items, while learning from previous Sprints. Planning their hourly capacity and comparing their estimates to actuals makes the team **pretend to be precise** and reduces ownership of their commitments. Unless the work is truly predictable, they should discard such practices.
+When teams are given complex work that has inherent uncertainty, they must work together to intuitively gauge their capacity to commit to items, while learning from previous Sprints. By contrast, planning their hourly capacity and comparing their estimates to actuals makes the team **pretend to be precise** and reduces ownership of their commitments. Unless the work is truly predictable, they should discard such practices.
 
 Until a team has learned how to complete a potentially-shippable product increment each Sprint, it should reduce the amount of functionality it commits to. Failure to do so leads to technical debt and eventual design death.
 
@@ -230,7 +230,7 @@ During Sprint execution it is common to discover additional tasks necessary to a
 
 > A common mechanism for managing the tasks in a sprint is the use of a [Kanban board](https://en.wikipedia.org/wiki/Kanban_board), of which [Trello](https://trello.com/) would be an example of a digital implementation.
 
-This meeting is not the place to discuss problems or dig deep into solutions. If that needs to happen, interested parties should engage after the meeting to have the requisite discussions. Do not hijack the stand-up meeting for this! While the scrum master can help facilitate, it is the responsibility of every team member to help stay on topic. If necessary, keep a parking lot or sidebar for those things.
+This meeting is not the place to discuss problems or dig deep into solutions. If that needs to happen, interested parties should engage after the meeting to have the requisite discussions. **Do not hijack the stand-up meeting for this!** While the scrum master can help facilitate, it is the responsibility of every team member to help stay on topic. If necessary, keep a parking lot or sidebar for those things.
 
 ### Pair Programming ###
 
@@ -250,7 +250,7 @@ At the end of each sprint, the team will demonstrate the working product increme
 
 Every sprint is designed to produce a potentially shippable product, however small. So it naturally falls that the primary purpose of the Sprint Review will be to demonstrate what was completed. It's important to stick to what was committed to and completed during the sprint, and not get caught up in discussions of what needs to be changed or done next. There will be time for that later in this meeting.
 
-It's also good time to note that any kind of feedback, positive or negative, is not appropriate for this meeting. Extrinsic manipulation (e.g. praise) is considered harmful to intrinsic motivation and transparency.
+It's also a good time to note that any kind of feedback, positive or negative, is not appropriate for this meeting. Extrinsic manipulation (e.g. praise) is considered harmful to intrinsic motivation and transparency.
 
 > Before attempting to motivate people, **it would be wise to have a clear understanding of [what motivates them](https://www.youtube.com/watch?v=u6XAPnuFjJc)**.
 
