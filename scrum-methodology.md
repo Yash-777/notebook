@@ -71,7 +71,6 @@ As Scrum principles are centered around self-organizing teams, only three roles 
 	- Intensely collaborative.
 	- Most successful when located in one team room, particularly for the first few Sprints.
 	- Most successful with long-term, full-time membership. Scrum moves work to a flexible learning team and avoids moving people or splitting them between teams.
-	- 7 ± 2 members.
 
 > In general, the community is shifting away from the term 'commit' in favor of the word 'forecast', acknowledging the inherit uncertainty embraced by agility in software development.
 
@@ -96,7 +95,7 @@ The Product Backlog is a force-ranked list of everything we might ever do, prior
 The Sprint Backlog is the work planned to do to achieve the goal of the current Sprint only, typically committed (or "forecasted") PBIs and related Sprint Tasks. While PBIs should focus on the what, Sprint Tasks represent the how.
 
 - **Information Radiators**
-Most Agile methodologies make use of big visible charts (or BVCs) for tracking progress and issues; the idea is to display important project information not in some formal way that is not on the web or lost in some tool, but in charts on the wall that no one can miss. Scrum makes frequent use of **burndown charts**. Common ones include Sprint Burndown Charts, Product Burndown Charts and Release Burndown Charts. However, these charts are not generally considered *artifacts* in that they typically do not survive beyond their scope.
+Most Agile methodologies make use of big visible charts (or BVCs) for tracking progress and issues; the idea is to display important project information not in some formal way that is on the web or lost in some tool, but in charts on the wall that no one can miss. Scrum makes frequent use of **burndown charts**. Common ones include Sprint Burndown Charts, Product Burndown Charts and Release Burndown Charts. However, these charts are not generally considered *artifacts* in that they typically do not survive beyond their scope.
 
 ### The Five Scrum Meetings ###
 
