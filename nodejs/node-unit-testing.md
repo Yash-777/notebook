@@ -1,7 +1,7 @@
 Unit Testing with Node.js
 =========================
 
-*See the [course repo on GitHub](https://github.com/joeeames/UnitTestingNodeCourse) for updates.*
+Unit testing is important.
 
 # Tools #
 
@@ -324,11 +324,42 @@ it('test asynch method', function (done)
 });
 ```
 
-## Mocks ##
-
-
-
 ## Promises ##
 
+While promises can be treated just like any other asyncronous method, you can save some steps if all you care is that the promise gets resolved.
+
+```javascript
+it('fulfills the promise', function ()
+{
+	return someObject.methodThatReturnsAPromise(3);
+});
+```
+
+Or we can use the `chai-as-promised` helper library.
+
+```
+$ npm install chai-as-promised
+```
+
+```javascript
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
+it('returns the correct value from the promise', function ()
+{
+	return someObject.methodThatReturnsAPromise(3).should.eventually.equal(3);
+});
+```
 
 ## Test Coverage ##
+
+We can use `istanbul` to see how well our unit tests have covered our code.
+
+```
+$ npm install -g istanbul
+
+$ istanbul cover node_modules/mocha/bin/_mocha -- -R spec
+```
+
+Aside from the command line output, it also creates a `coverage` directory which gives us the ability to drill down into the code to see where we still need coverage. 
