@@ -1,7 +1,7 @@
 Unit Testing with Node.js
 =========================
 
-Unit testing is important.
+*See the [course repo on GitHub](https://github.com/joeeames/UnitTestingNodeCourse) for updates.*
 
 # Tools #
 
